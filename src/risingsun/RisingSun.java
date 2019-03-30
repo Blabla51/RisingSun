@@ -24,9 +24,8 @@ public class RisingSun {
         // LOVE STRAS
         
         reset(); 
-        join("monia"); 
-        join("monia2"); 
-        System.out.println(GameServer.token);
+        Player p1 = join("monia"); 
+        Player p2 = join("monia2"); 
         
 //        String[] str = post("http://localhost:8080/IA/Join","IAName=monia"); 
 //        String[] str = get("http://localhost:8080/Reset"); 

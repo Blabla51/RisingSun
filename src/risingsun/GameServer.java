@@ -16,15 +16,11 @@ public class GameServer {
     
     public static String host = "http://localhost:8080/"; 
     
-    public static String token = ""; 
-    
-    public static void join(String iaName) throws Exception {
+    public static Player join(String iaName) throws Exception {
         String str[] = post(host + "IA/Join","IAName=" + iaName); 
         JSONObject obj = new JSONObject(str[1]); 
-        String id = obj.getString("id"); 
-        String status = obj.getString("status"); 
-        token = obj.getString("token"); 
         
+        return new Player(obj.getInt("id"), obj.getString("token")); 
         // ajouter JSON parser et renvoyer un objet
     }
     
@@ -41,14 +37,14 @@ public class GameServer {
         return str[1]; 
     }
     
-    public static String playAction(Action[] actions) throws Exception {
+    public static String playAction(Player p, Action[] actions) throws Exception {
         
         JSONArray ja = new JSONArray(); 
         for (int i = 0; i < actions.length; i++) {
             ja.put(actions[i].toJSON()); 
         }
         
-        String[] str = post(host + "PlayAction","token=" + token, ja.toString()); 
+        String[] str = post(host + "PlayAction","token=" + p.token, ja.toString()); 
         
         return str[1]; 
     }
@@ -86,8 +82,8 @@ public class GameServer {
         
     }
     
-    public static void getVisible() throws Exception {
-        String[] str = get(host + "Get/Visible?token=" + token); 
+    public static void getVisible(Player p) throws Exception {
+        String[] str = get(host + "Get/Visible?token=" + p.token); 
         JSONObject obj = new JSONObject(str[1]); 
         JSONObject object = obj.getJSONObject("object"); 
         String status = obj.getString("status"); 
@@ -118,13 +114,13 @@ public class GameServer {
         
     }
     
-    public static void endTurn() throws Exception{
-        String[] str = post(host + "End/Turn", token);
+    public static void endTurn(Player p) throws Exception{
+        String[] str = post(host + "End/Turn", p.token);
     }
         
 
-    public static boolean waitTurn() throws Exception {
-        String[] str = get(host + "Wait?token=" + token);  
+    public static boolean waitTurn(Player p) throws Exception {
+        String[] str = get(host + "Wait?token=" + p.token);  
         return true;
     }
 
