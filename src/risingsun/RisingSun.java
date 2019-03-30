@@ -5,6 +5,7 @@
  */
 package risingsun;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import static risingsun.GameServer.*;
 
@@ -23,11 +24,9 @@ public class RisingSun {
         // LOVE STRAS
         
         reset(); 
-        join("monia"); 
-        join("monia2"); 
-        System.out.println(GameServer.token);
-        System.out.println(startGame()); 
-
+        Player p1 = join("monia"); 
+        Player p2 = join("monia2"); 
+        
 //        String[] str = post("http://localhost:8080/IA/Join","IAName=monia"); 
 //        String[] str = get("http://localhost:8080/Reset"); 
 //        System.out.println(str[0]);
