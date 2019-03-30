@@ -45,7 +45,7 @@ public class GameServer {
         for (int i = 0; i < actions.length; i++) {
             ja.put(actions[i].toJSON()); 
         }
-        
+        System.out.println(ja.toString());
         String[] str = post(host + "PlayAction","Token=" + p.token, ja.toString()); 
         
         return str[1]; 
@@ -87,9 +87,10 @@ public class GameServer {
         
     }
     
-    public static void getVisible(Player p) throws Exception {
-        String[] str = get(host + "Get/Visible?token=" + p.token); 
+    public static Node[] getVisible(Player p) throws Exception {
+        String[] str = get(host + "Get/Visible?Token=" + p.token); 
         JSONObject obj = new JSONObject(str[1]); 
+        System.out.println(str[1]);
         JSONObject object = obj.getJSONObject("object"); 
         String status = obj.getString("status"); 
         
@@ -116,17 +117,18 @@ public class GameServer {
                     obji.getBoolean("isServer"), 
                     obji.getInt("owner")); 
         }
-        
+        return nodes;
     }
     
     public static void endTurn(Player p) throws Exception{
-        String[] str = post(host + "End/Turn", p.token);
+        String[] str = post(host + "End/Turn", "Token=" + p.token);
     }
         
 
     public static boolean waitTurn(Player p) throws Exception {
-        String[] str = get(host + "Wait?Token=" + p.token);  
-        return true;
-    }
+        String[] str = get(host + "Wait?Token=" + p.token); 
+        JSONObject jo = new JSONObject(str[1]); 
+        return jo.getBoolean("wait"); 
+    } 
 
 }

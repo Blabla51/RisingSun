@@ -36,6 +36,16 @@ public class RisingSun {
         for (int i = 0; i < n.length; i++) {
             System.out.println(n[i].toString());
         }
+        Node[] n2 = getVisible(p1);
+        for (int i = 0; i < n2.length; i++) {
+            System.out.println(n2[i].toString());
+        }
+        Action a = new Action(p1.id, 0,2,10);
+        Action[] at = new Action[1];
+        at[0] = a; 
+        System.out.println(playAction(p1, at));
+        endTurn(p1);
+        
 //        String[] str = post("http://localhost:8080/IA/Join","IAName=monia"); 
 //        String[] str = get("http://localhost:8080/Reset"); 
 //        System.out.println(str[0]);

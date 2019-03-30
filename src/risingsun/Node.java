@@ -24,6 +24,7 @@ public class Node {
     public boolean next2neutral;
     public boolean next2ennemis;
     public boolean farFromEnnemis;
+    public boolean next2next2ennemis;
     
 
     public Node(int id, double coordX, double coordY, int production, int qtCode, NeighborNode[] neighbors, boolean bonus, int typeBonus, boolean isServer, int owner) {
@@ -39,7 +40,7 @@ public class Node {
         this.owner = owner;
         this.next2ennemis = false; // Change avec fonction update
         this.next2neutral = false; // idem
-        this.farFromEnnemis = false; // idem
+        this.next2next2ennemis = false; // Change avec fonction update
         
     }
     @Override public String toString(){
