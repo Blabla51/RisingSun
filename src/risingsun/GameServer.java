@@ -47,6 +47,35 @@ public class GameServer {
     
     public static void getBoard() throws Exception {
         String[] str = get(host + "Get/Board"); 
+        
+        JSONObject obj = new JSONObject(str[1]); 
+        String status = obj.getString("status"); 
+        JSONObject object = obj.getJSONObject("object"); 
+        
+        JSONArray plateau = object.getJSONArray("plateau"); 
+        
+        Node[] nodes = new Node[plateau.length()]; 
+        
+        for (int i = 0; i < plateau.length(); i++) {
+            JSONObject obji = plateau.getJSONObject(i); 
+            JSONArray Jneighbors = obji.getJSONArray("neighbors"); 
+            NeighborNode[] neighbors = new NeighborNode[Jneighbors.length()]; 
+            for (int j = 0; j < neighbors.length; j++) {
+                neighbors[j] = new NeighborNode(Jneighbors.getJSONObject(j).getInt("id"), Jneighbors.getJSONObject(j).getInt("debit")); 
+            }
+            nodes[i] = new Node(
+                    obji.getInt("id"), 
+                    obji.getDouble("coordX"), 
+                    obji.getDouble("coordY"), 
+                    obji.getInt("production"), 
+                    obji.getInt("qtCode"), 
+                    neighbors, 
+                    obji.getBoolean("bonus"), 
+                    obji.getInt("typeBonus"), 
+                    obji.getBoolean("isServer"), 
+                    obji.getInt("owner")); 
+        }
+        
     }
     
     public static void getVisible() throws Exception {
