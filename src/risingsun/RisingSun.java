@@ -25,9 +25,17 @@ public class RisingSun {
         // LOVE STRAS
         
         reset(); 
-        Player p1 = join("monia"); 
-        Player p2 = join("monia2"); 
+        Player p1 = join("monia");
+        waitTurn(p1);
+        Player p2 = join("monia2");
+        waitTurn(p2);
+        //System.out.println(chooseMap("map0"));
         
+        System.out.println(startGame());
+        Node[] n = getBoard(p1);
+        for (int i = 0; i < n.length; i++) {
+            System.out.println(n[i].toString());
+        }
 //        String[] str = post("http://localhost:8080/IA/Join","IAName=monia"); 
 //        String[] str = get("http://localhost:8080/Reset"); 
 //        System.out.println(str[0]);

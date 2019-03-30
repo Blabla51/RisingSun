@@ -34,6 +34,15 @@ public class Node {
         this.isServer = isServer;
         this.owner = owner;
     }
+    @Override public String toString(){
+        String s = "";
+        s += "Node : \n id = " + id + "\n x = " + coordX + "\n y = " + coordY + "\n" + "production : " + production + "qtCode = " + qtCode;
+        for (int i = 0; i < neighbors.length; i++) {
+            s += "Neighbors id : " + neighbors[i].id + "\n";
+        }
+        s += "owner = " + owner + "\n";
+        return s;
+    }
     
     
     
