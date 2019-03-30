@@ -32,19 +32,40 @@ public class RisingSun {
         //System.out.println(chooseMap("map0"));
         
         System.out.println(startGame());
-        Node[] n = getBoard(p1);
+        /*Node[] n = getBoard(p1);
         for (int i = 0; i < n.length; i++) {
             System.out.println(n[i].toString());
-        }
+        }*/
+        /*System.out.println("P1");
         Node[] n2 = getVisible(p1);
         for (int i = 0; i < n2.length; i++) {
-            System.out.println(n2[i].toString());
+            //System.out.println(n2[i].toString());
+        }
+        
+        System.out.println("P2");
+        Node[] n3 = getVisible(p2);
+        for (int i = 0; i < n3.length; i++) {
+            //System.out.println(n3[i].toString());
         }
         Action a = new Action(p1.id, 0,2,10);
         Action[] at = new Action[1];
         at[0] = a; 
         System.out.println(playAction(p1, at));
-        endTurn(p1);
+        System.out.println(endTurn(p1));*/
+        
+        IA_Pourrie iap = new IA_Pourrie(p1);
+        MammamIA mia = new MammamIA(p2);
+        
+        for (int i = 0; i < 30; i++) {
+            System.out.println("p1");
+            System.out.println(playAction(p1, iap.play(new Map())));
+            System.out.println(endTurn(p1));
+            System.out.println("p2");
+            //System.out.println(playAction(p2, mia.play(new Map())));
+            System.out.println(endTurn(p2));
+        }
+        
+        
         
 //        String[] str = post("http://localhost:8080/IA/Join","IAName=monia"); 
 //        String[] str = get("http://localhost:8080/Reset"); 

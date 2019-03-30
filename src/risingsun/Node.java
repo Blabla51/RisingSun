@@ -47,7 +47,7 @@ public class Node {
         String s = "";
         s += "Node : \n id = " + id + "\n x = " + coordX + "\n y = " + coordY + "\n" + "production : " + production + "qtCode = " + qtCode + "\n";
         for (int i = 0; i < neighbors.length; i++) {
-            s += "Neighbors[" + i + "] id : " + neighbors[i].id + "\n";
+            s += "Neighbors[" + i + "] id : " + neighbors[i].id + " & debit = " + neighbors[i].debit + "\n";
         }
         s += "owner = " + owner + "\n";
         return s;

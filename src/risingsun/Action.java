@@ -25,6 +25,12 @@ public class Action {
         this.to = to;
         this.qtCode = qtCode;
     }
+    public Action(Action a) {
+        this.owner = a.owner;
+        this.from = a.from;
+        this.to = a.to;
+        this.qtCode = a.qtCode;
+    }
 
     public JSONObject toJSON() throws JSONException {
         JSONObject jo = new JSONObject(); 
