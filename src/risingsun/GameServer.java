@@ -109,4 +109,15 @@ public class GameServer {
         }
         
     }
+    
+    public static void endTurn(){
+        String[] str = post(host + "End/Turn");
+    }
+        
+
+    public static boolean  wait(){
+        String[] = get(host + "Wait?token=" + token );  
+        return true;
+    }
+
 }
