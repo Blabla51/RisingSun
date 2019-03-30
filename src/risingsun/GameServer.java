@@ -43,6 +43,10 @@ public class GameServer {
     
     public static void playAction() throws Exception {
         String[] str = post(host + "PlayAction",token); 
+        
+        
+        
+        
     }
     
     public static void getBoard() throws Exception {
@@ -110,13 +114,13 @@ public class GameServer {
         
     }
     
-    public static void endTurn(){
-        String[] str = post(host + "End/Turn");
+    public static void endTurn() throws Exception{
+        String[] str = post(host + "End/Turn", token);
     }
         
 
-    public static boolean  wait(){
-        String[] = get(host + "Wait?token=" + token );  
+    public static boolean waitTurn() throws Exception {
+        String[] str = get(host + "Wait?token=" + token);  
         return true;
     }
 

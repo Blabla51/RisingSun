@@ -5,6 +5,7 @@
  */
 package risingsun;
 
+import org.json.JSONObject;
 import static risingsun.GameServer.*;
 
 
@@ -26,7 +27,7 @@ public class RisingSun {
         join("monia2"); 
         System.out.println(GameServer.token);
         System.out.println(startGame()); 
-        
+
 //        String[] str = post("http://localhost:8080/IA/Join","IAName=monia"); 
 //        String[] str = get("http://localhost:8080/Reset"); 
 //        System.out.println(str[0]);
