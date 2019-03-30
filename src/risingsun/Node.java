@@ -20,7 +20,11 @@ public class Node {
     public boolean bonus; 
     public int typeBonus; 
     public boolean isServer; 
-    public int owner; 
+    public int owner;
+    public boolean next2neutral;
+    public boolean next2ennemis;
+    public boolean farFromEnnemis;
+    
 
     public Node(int id, double coordX, double coordY, int production, int qtCode, NeighborNode[] neighbors, boolean bonus, int typeBonus, boolean isServer, int owner) {
         this.id = id;
@@ -33,8 +37,15 @@ public class Node {
         this.typeBonus = typeBonus;
         this.isServer = isServer;
         this.owner = owner;
+        this.next2ennemis = false; // Change avec fonction update
+        this.next2neutral = false; // idem
+        this.farFromEnnemis = false; // idem
+        
     }
     
-    
-    
+    // A faire par la suite
+    public void update(){
+        
+    }
+   
 }
