@@ -1,3 +1,4 @@
+ 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -49,7 +50,7 @@ public class GameServer {
         return str[1]; 
     }
     
-    public static void getBoard() throws Exception {
+    public static Node[] getBoard() throws Exception {
         String[] str = get(host + "Get/Board"); 
         
         JSONObject obj = new JSONObject(str[1]); 
@@ -79,6 +80,8 @@ public class GameServer {
                     obji.getBoolean("isServer"), 
                     obji.getInt("owner")); 
         }
+        
+        return nodes;
         
     }
     
