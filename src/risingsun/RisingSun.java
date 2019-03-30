@@ -23,7 +23,9 @@ public class RisingSun {
         
         reset(); 
         join("monia"); 
+        join("monia2"); 
         System.out.println(GameServer.token);
+        System.out.println(startGame()); 
         
 //        String[] str = post("http://localhost:8080/IA/Join","IAName=monia"); 
 //        String[] str = get("http://localhost:8080/Reset"); 
