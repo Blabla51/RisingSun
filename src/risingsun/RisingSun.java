@@ -5,12 +5,7 @@
  */
 package risingsun;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import static risingsun.HTTPHelper.*;
 
 
 /**
@@ -25,36 +20,9 @@ public class RisingSun {
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
         // LOVE STRAS
-        String[] str = get("http://localhost:8080/Start/Game"); 
+        String[] str = post("http://localhost:8080/IA/Join","IAName=monia"); 
         System.out.println(str[0]);
         System.out.println(str[1]);
     }
     
-	public static String[] get(String url) throws Exception {
-		URL obj = new URL(url);
-		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
-		con.setRequestMethod("GET");
-
-		int responseCode = con.getResponseCode();
-
-		BufferedReader in = new BufferedReader(
-		        new InputStreamReader(con.getInputStream()));
-		String inputLine;
-		StringBuffer response = new StringBuffer();
-
-		while ((inputLine = in.readLine()) != null) {
-			response.append(inputLine);
-		}
-		in.close();
-
-		String ar[] = new String[2];
-		
-		ar[0] = Integer.toString(con.getResponseCode());
-        ar[1] = response.toString();
-		
-		return ar;
-		
-	}
-        
 }
