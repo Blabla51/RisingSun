@@ -38,7 +38,7 @@ public class HTTPHelper {
 		String ar[] = new String[2];
 		
 		ar[0] = Integer.toString(con.getResponseCode());
-        ar[1] = response.toString();
+                ar[1] = response.toString();
 		
 		return ar;
 		
