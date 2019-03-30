@@ -22,55 +22,39 @@ public class RisingSun {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         // TODO code application logic here
         // LOVE STRAS
-        String str = executePost("localhost:8080/Start/Game",""); 
-        System.out.println(str);
+        String[] str = get("http://localhost:8080/Start/Game"); 
+        System.out.println(str[0]);
+        System.out.println(str[1]);
     }
     
-public static String executePost(String targetURL, String urlParameters) {
-  HttpURLConnection connection = null;
+	public static String[] get(String url) throws Exception {
+		URL obj = new URL(url);
+		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-  try {
-    //Create connection
-    URL url = new URL(targetURL);
-    connection = (HttpURLConnection) url.openConnection();
-    connection.setRequestMethod("POST");
-    connection.setRequestProperty("Content-Type", 
-        "application/x-www-form-urlencoded");
+		con.setRequestMethod("GET");
 
-    connection.setRequestProperty("Content-Length", 
-        Integer.toString(urlParameters.getBytes().length));
-    connection.setRequestProperty("Content-Language", "en-US");  
+		int responseCode = con.getResponseCode();
 
-    connection.setUseCaches(false);
-    connection.setDoOutput(true);
+		BufferedReader in = new BufferedReader(
+		        new InputStreamReader(con.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
 
-    //Send request
-    DataOutputStream wr = new DataOutputStream (
-        connection.getOutputStream());
-    wr.writeBytes(urlParameters);
-    wr.close();
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
 
-    //Get Response  
-    InputStream is = connection.getInputStream();
-    BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-    StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
-    String line;
-    while ((line = rd.readLine()) != null) {
-      response.append(line);
-      response.append('\r');
-    }
-    rd.close();
-    return response.toString();
-  } catch (Exception e) {
-    e.printStackTrace();
-    return null;
-  } finally {
-    if (connection != null) {
-      connection.disconnect();
-    }
-  }
-}
+		String ar[] = new String[2];
+		
+		ar[0] = Integer.toString(con.getResponseCode());
+        ar[1] = response.toString();
+		
+		return ar;
+		
+	}
+        
 }
