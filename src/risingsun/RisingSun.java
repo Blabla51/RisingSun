@@ -5,7 +5,7 @@
  */
 package risingsun;
 
-import static risingsun.HTTPHelper.*;
+import static risingsun.GameServer.*;
 
 
 /**
@@ -20,9 +20,15 @@ public class RisingSun {
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
         // LOVE STRAS
-        String[] str = post("http://localhost:8080/IA/Join","IAName=monia"); 
-        System.out.println(str[0]);
-        System.out.println(str[1]);
+        
+        reset(); 
+        join("monia"); 
+        System.out.println(GameServer.token);
+        
+//        String[] str = post("http://localhost:8080/IA/Join","IAName=monia"); 
+//        String[] str = get("http://localhost:8080/Reset"); 
+//        System.out.println(str[0]);
+//        System.out.println(str[1]);
     }
     
 }
