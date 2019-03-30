@@ -41,12 +41,16 @@ public class GameServer {
         return str[1]; 
     }
     
-    public static void playAction() throws Exception {
-        String[] str = post(host + "PlayAction",token); 
+    public static String playAction(Action[] actions) throws Exception {
         
+        JSONArray ja = new JSONArray(); 
+        for (int i = 0; i < actions.length; i++) {
+            ja.put(actions[i].toJSON()); 
+        }
         
+        String[] str = post(host + "PlayAction","token=" + token, ja.toString()); 
         
-        
+        return str[1]; 
     }
     
     public static void getBoard() throws Exception {

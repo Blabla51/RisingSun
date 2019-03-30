@@ -84,14 +84,18 @@ public class HTTPHelper {
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
 		con.setRequestMethod("POST");
+                con.setRequestProperty("Content-Type", "application/json");
                 
                 String urlParameters = param;
                 
                 con.setDoOutput(true);
                 DataOutputStream wr = new DataOutputStream(con.getOutputStream());
                 wr.writeBytes(urlParameters);
+                wr.writeBytes(content);
                 wr.flush();
                 wr.close();
+                con.connect(); 
+                
 
 		int responseCode = con.getResponseCode();
 
