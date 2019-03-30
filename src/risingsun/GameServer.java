@@ -50,7 +50,7 @@ public class GameServer {
         return str[1]; 
     }
     
-    public static void getBoard() throws Exception {
+    public static Node[] getBoard() throws Exception {
         String[] str = get(host + "Get/Board"); 
         
         JSONObject obj = new JSONObject(str[1]); 
@@ -80,6 +80,8 @@ public class GameServer {
                     obji.getBoolean("isServer"), 
                     obji.getInt("owner")); 
         }
+        
+        return nodes;
         
     }
     
