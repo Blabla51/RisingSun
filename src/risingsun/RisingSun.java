@@ -7,7 +7,7 @@ package risingsun;
 
 /**
  *
- * @author ardayigit
+ * @author QB
  */
 public class RisingSun {
 
@@ -16,7 +16,6 @@ public class RisingSun {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        // test Arda
     }
     
 }
