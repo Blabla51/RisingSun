@@ -57,5 +57,14 @@ public class Node {
     public void update(){
         
     }
+    
+    public NeighborNode getNeighbor(int id) {
+        for (int i = 0; i < this.neighbors.length; i++) {
+            if (this.neighbors[i].id == id) {
+                return this.neighbors[i]; 
+            }
+        }
+        return null; 
+    }
    
 }
