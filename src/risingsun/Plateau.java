@@ -21,11 +21,9 @@ public class Plateau {
         for (int i = 0; i < n.length; i++) {
             this.nodes[n[i].id].owner = n[i].owner; 
             this.nodes[n[i].id].qtCode = n[i].qtCode; 
-            // mettre à jour les débits
+            
             NeighborNode[] nn = this.nodes[n[i].id].neighbors; 
             for (int j = 0; j < nn.length; j++) {
-                // quel est le lien à mettre à jour ? 
-                // n[i].id -> nn[j].id
                 System.out.println(nn[j].debit);
                 this.nodes[n[i].id].getNeighbor(nn[j].id).debit = n[i].neighbors[j].debit; 
             }

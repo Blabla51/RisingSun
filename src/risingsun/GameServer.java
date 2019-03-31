@@ -130,6 +130,14 @@ public class GameServer {
         String[] str = get(host + "Wait?Token=" + p.token); 
         JSONObject jo = new JSONObject(str[1]); 
         return jo.getBoolean("wait"); 
-    } 
+    }
+    
+    
+    public static int getTurn(Player p) throws Exception {
+        String[] str = get(host + "Get/Turn?Token=" + p.token); 
+        JSONObject jo = new JSONObject(str[1]); 
+        return jo.getInt("turn"); 
+    }
+    
 
 }

@@ -34,14 +34,14 @@ public class MainArda {
             al.add(n2[i].id); 
         }
         
-        for (int i = 0; i < plateau.nodes.length; i++) {
+        /*for (int i = 0; i < plateau.nodes.length; i++) {
             if (al.contains(i)) {
                 NeighborNode[] nn = plateau.nodes[i].neighbors; 
                 for (int j = 0; j < nn.length; j++) {
                     System.out.println(nn[j].id + "\t" + nn[j].debit);
                 }
             }
-        }
+        }*/
         
         
         
