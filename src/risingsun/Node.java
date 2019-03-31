@@ -66,5 +66,23 @@ public class Node {
         }
         return null; 
     }
+    public int getDistanceEnnemy(Map m, Player p){
+        int n = -1;
+        if(owner != id && owner != 0){  //ennemy
+            return 0;
+        }
+        for (int i = 0; i < this.neighbors.length; i++) {
+            if(neighbors[i].id != id && neighbors[i].id != 0){
+                int k = m.v.get(neighbors[i].id).getDistanceEnnemy(m, p);
+                if(n == -1){
+                    n = k;
+                }
+                if(k < n){
+                    n = k;
+                }
+            }
+        }
+        return n;
+    }
    
 }

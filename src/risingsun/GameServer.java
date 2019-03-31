@@ -45,7 +45,7 @@ public class GameServer {
         for (int i = 0; i < actions.length; i++) {
             ja.put(actions[i].toJSON()); 
         }
-        System.out.println(ja.toString());
+        //System.out.println(ja.toString());
         String[] str = post(host + "PlayAction","Token=" + p.token, ja.toString()); 
         
         return str[1]; 
@@ -90,7 +90,7 @@ public class GameServer {
     public static Node[] getVisible(Player p) throws Exception {
         String[] str = get(host + "Get/Visible?Token=" + p.token); 
         JSONObject obj = new JSONObject(str[1]); 
-        System.out.println(str[1]);
+        //System.out.println(str[1]);
         JSONObject object = obj.getJSONObject("object"); 
         String status = obj.getString("status"); 
         
