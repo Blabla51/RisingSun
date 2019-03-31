@@ -9,6 +9,7 @@ package risingsun;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import static risingsun.GameServer.*;
+import java.lang.*;
 
 
 /**
@@ -56,13 +57,33 @@ public class RisingSun {
         IA_Pourrie iap = new IA_Pourrie(p1);
         MammamIA mia = new MammamIA(p2);
         
-        for (int i = 0; i < 30; i++) {
-            System.out.println("p1");
+        for (int i = 0; i < 3; i++) {
+            //System.out.println("p1");
             System.out.println(playAction(p1, iap.play(new Map())));
-            System.out.println(endTurn(p1));
-            System.out.println("p2");
+            //playAction(p1, iap.play(new Map()));
+            //endTurn(p1);
+            //endTurn(p2);
+            Node[] n3 = getVisible(p2);
+            //for (int p = 0; p < n3.length; p++) {
+            System.out.println(i);
+            System.out.println(n3[0].qtCode);
+            //}
+            //System.out.println("p2");
             //System.out.println(playAction(p2, mia.play(new Map())));
-            System.out.println(endTurn(p2));
+            //System.out.println(endTurn(p1));
+            //System.out.println(endTurn(p2));
+            System.out.println("wait : ");
+            System.out.println(waitTurn(p1));
+            while(waitTurn(p1)){
+                Thread.sleep(1);
+            };
+            /*while(waitTurn(p2)){
+                Thread.sleep(1);
+            };*/
+            
+            System.out.println("");
+            //Thread.sleep(10);
+            //Thread.sleep(500);
         }
         
         
